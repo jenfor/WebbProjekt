@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <!-- TODO --> 
+    <f:metadata>
+        <f:viewParam name="id" value="#{editProduct.id}"  />
+        <f:viewParam name="name" value="#{editProduct.name}"  />
+        <f:viewParam name="price" value="#{editProduct.price}"  />
+    </f:metadata>
+   
+    <h:head>
+        <title>Edit product</title>
+    </h:head>  
+    <h:body>
+
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+                <h3>Edit product</h3>
+
+                 <!-- TODO --> 
+                 
+                 <p>Id set by application (database)</p>
+                <h:form class="partial-form">
+
+                    
+                    <h:panelGrid columns="2" class="table">
+                        <h:outputLabel value="Id"/>
+                        <h:outputText value="#{editProduct.id}"/> 
+                        <h:outputLabel value="Name" />
+                        <h:inputText value="#{editProduct.name}"/> 
+                        <h:outputLabel value="Price" />
+                        <h:inputText value="#{editProduct.price}"/> 
+                    </h:panelGrid>
+                    
+                    
+                    <div class="btn-group">
+                        <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
+                                         action="productList?faces-redirect=true" />
+                        <h:commandButton value="Save" actionListener="#{productCtrl.updateProduct()}" 
+                                         action="productList?faces-redirect=true" 
+                                         class="btn btn-default"/>
+                    </div>
+                </h:form>
+                 
+                 
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
